@@ -36,15 +36,12 @@ define([
       $.ajax({
         url: this.url,
         success: function(resp, message, xhr) {
-          console.log({
-            resp:resp,
-            arguments:arguments
-          });
           if (resp.meta && resp.meta.code == 400) { // 400 error
             that.trigger('error', that, xhr, resp.meta.error_message);
           } else if (resp.meta.code == 200) { // all good in the hood, g
             that.add(resp.data);
             that.trigger('sync');
+            console.log(resp);
           } else { // unknown error
             that.trigger('error', that, xhr, 'Unkown error with sync');
           };

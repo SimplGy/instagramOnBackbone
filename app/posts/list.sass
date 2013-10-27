@@ -1,12 +1,24 @@
 @import '../global/__'
 
 
+.postsList
+  list-style: none
+  margin: 0
+  padding: 0
+  font-size: 0 // no space between inline block elements
+
+  li, li a
+    display: inline-block
+
+  li
+    padding: 5px
+    +box-sizing(border-box)
+    font-size: $fontSizeBody
+    width: 50%
+    +tablet
+      width: 33%
+    +desktop
+      width: 20%
 
 
 
-
-.muted
-  color: $colorMuted
-
-img
-  max-height: 200px

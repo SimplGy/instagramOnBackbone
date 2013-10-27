@@ -1,0 +1,34 @@
+
+
+// For Device & Screen responding
+$sizePhone: 603px
+$sizeTablet: 1024px
+
+@mixin phone
+  @media (max-width: $sizePhone)
+    @content
+@mixin tablet
+  @media (min-width: $sizePhone+1) and (max-width: $sizeTablet)
+    @content
+@mixin desktop
+  @media (min-width: $sizeTablet+1)
+    @content
+@mixin tabletAndUp
+  @media (min-width: $sizePhone+1)
+    @content
+@mixin phoneAndTablet
+  @media (max-width: $sizeTablet)
+    @content
+
+
+
+@mixin transitionable($props: all, $speed: 0.15s, $easing: ease-in-out)
+  @include transition ($props $speed $easing)
+
+
+
+// border and bg. Mostly for quick debugging
+@mixin border($color: peru)
+  border: 1px dotted $color
+@mixin bg($color: pink)
+  background-color: transparentize($color, .6)

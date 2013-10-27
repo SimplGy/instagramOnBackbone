@@ -1,5 +1,20 @@
-.muted {
-  color: rgba(0, 0, 0, 0.4); }
-
-img {
-  max-height: 200px; }
+.postsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0; }
+  .postsList li, .postsList li a {
+    display: inline-block; }
+  .postsList li {
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 50%; }
+    @media (min-width: 604px) and (max-width: 1024px) {
+      .postsList li {
+        width: 33%; } }
+    @media (min-width: 1025px) {
+      .postsList li {
+        width: 20%; } }

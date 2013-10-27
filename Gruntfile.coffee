@@ -21,7 +21,7 @@ module.exports = (grunt) ->
     watch:
       styles:
         files: ["<%= cfg.app %>/{,*/}*.css"]
-        tasks: ["concat", "cssmin"]
+        tasks: ["useminPrepare", "concat", "cssmin"]
 
       js:
         files: ["<%= cfg.app %>/{,*/}*.js"]
