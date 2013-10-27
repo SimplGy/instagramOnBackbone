@@ -11,7 +11,7 @@ define([
 
     initialize: function() {
       this.collection = new Posts;
-      this.listenTo(this.collection, 'add', this.addItems);
+      this.listenTo(this.collection, 'sync', this.onSync);
       this.collection.fetch();
     },
 
@@ -20,24 +20,16 @@ define([
       return this;
     },
 
-    addItems: function() {
-      var markup = '';
-
+    onSync: function() {
+      var markup = '', img;
       this.collection.each(function(model) {
-        var photo, _i, _len, _ref, _results;
-        if (model.attributes.photos) {
-          _ref = model.attributes.photos;
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            photo = _ref[_i];
-            _results.push(markup += "<img src='" + photo.original_size.url + "' />");
-          }
-          return _results;
-        }
+        img = model.attributes.images.thumbnail;
+        markup += "<img src='" + img.url + "' />"
       });
       this.$el.html(markup);
       return this;
     }
+
 
   });
 
