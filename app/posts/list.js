@@ -1,15 +1,25 @@
 
 define([
   'backbone',
-  './posts'
+  './posts',
+  'hb!./list.hbs'
 ], function(
   Backbone,
-  Posts
+  Posts,
+  tmpl
 ) {
 
-  var Export = Backbone.View.extend({
 
-    tagName: 'ul',
+  var Export,
+    _listSel = '#PostsList';
+
+
+  Export = Backbone.View.extend({
+
+    events: {
+      'click #Refresh': 'onRefresh'
+    },
+
     className: 'postsList',
 
     initialize: function() {
@@ -19,18 +29,24 @@ define([
     },
 
     render: function() {
-      this.$el.html('<li class="muted">Loading Images...</li>');
+      this.$el.html(tmpl());
       return this;
     },
 
     onSync: function() {
-      var markup = '', img;
+      this.$(_listSel).empty(); // Clear the current page on a sync
+
+      // For each model, render the view and insert the markup.
       this.collection.each(function(model) {
-        img = model.attributes.images.low_resolution;
-        markup += "<li><a target='_blank' href='"+ model.attributes.link +"'><img src='"+ img.url +"' /></a></li>";
-      });
-      this.$el.html(markup);
+        this.$(_listSel).append(model.view.render().el);
+      }.bind(this));
+
       return this;
+    },
+
+    onRefresh: function(){
+      this.$(_listSel).empty();
+      this.collection.fetch();
     }
 
 

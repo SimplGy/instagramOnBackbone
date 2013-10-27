@@ -1,17 +1,20 @@
 
 define([
-  'backbone'
+  'backbone',
+  'hb!./one.hbs'
 ], function(
-  Backbone
+  Backbone,
+  tmpl
 ) {
 
-  var Export;
-
-  Export = Backbone.View.extend({
-    initialize: function() {
-      return console.log('Incident Single View Init');
+  var Export = Backbone.View.extend({
+    tagName: 'li',
+    render: function(){
+      this.$el.html(tmpl(this.model.attributes));
+      return this;
     }
   });
 
   return Export;
 });
+

@@ -22,9 +22,17 @@
     <script>
       require({
         paths: {
-          'jquery':     'bower_components/jquery2/jquery.min',
-          'backbone':   'bower_components/backbone-amd/backbone-min',
-          'underscore': 'bower_components/underscore-amd/underscore-min'
+          text:          'bower_components/requirejs-text/text',
+          handlebars:    'bower_components/handlebars/handlebars',
+          hb:            'bower_components/requirejs-handlebars/hb',
+          jquery:        'bower_components/jquery2/jquery.min',
+          backbone:      'bower_components/backbone-amd/backbone-min',
+          underscore:    'bower_components/underscore-amd/underscore-min'
+        },
+        shim: {
+          handlebars: {
+            exports: 'Handlebars'
+          }
         }
       });
       require(['app'],function(App){
