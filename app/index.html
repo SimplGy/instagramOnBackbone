@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Instagram API on Backbone</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css all-min.css -->
+    <link rel="stylesheet" href="global/typography.css"/>
+    <link rel="stylesheet" href="posts/list.css"/>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <section id="App"></section>
+
+    <!-- Vendor Code -->
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <!-- My Code -->
+    <script>
+      require({
+        paths: {
+          'jquery':     'bower_components/jquery2/jquery.min',
+          'backbone':   'bower_components/backbone-amd/backbone-min',
+          'underscore': 'bower_components/underscore-amd/underscore-min'
+        }
+      });
+      require(['app'],function(App){
+        window.app = new App({
+          clientId: '@@client_id'
+        });
+      });
+    </script>
+
+  </body>
+</html>
